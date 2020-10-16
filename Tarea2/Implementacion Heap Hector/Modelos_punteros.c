@@ -23,7 +23,7 @@ int main(){
     perro string;  //! Ejemplo string
     char* stringote="Fernando";
     string= stringote;
-    printf("El string es: %s\n", string);
+    printf("El string es: %s, y su primer caracter es: %c\n", ((char*)string), ((char*)string)[0]);
 
     return 0;
 }

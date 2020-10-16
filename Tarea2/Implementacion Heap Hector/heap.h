@@ -17,9 +17,7 @@ typedef struct{
     int error; //! Se usa error para ver si es que es un buen heap, 0 si es bueno, 1 si es malo
 }tHeap;
 
-int comparador(void* primera, void* segunda){}
 
-void printElem(void* elemento){}
 
 tHeap *newHeap(int (*comparador)(void *, void *), int (*printElem)(void *)){
     tHeap *h = (tHeap *)malloc(sizeof(tHeap));
