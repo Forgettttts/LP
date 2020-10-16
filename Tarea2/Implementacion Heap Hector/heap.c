@@ -5,7 +5,6 @@ tHeap* newHeap(){
     if(h == NULL){
         return NULL;
     }
-    
     h->error = 0;
     h->capacidad = 1;
     h->nElems = 0;
@@ -71,8 +70,7 @@ void pushHeap(tHeap* h, tipoElem elem){
     }
     h->heap[i] = elem;
     while (i > 1) {
-        int j = i/2;
-        if (h->heap[i] > h->heap[j]) {
+        int j = i/2;        if (h->heap[i] > h->heap[j]) {
             swapElemsHeap(h, i, j);
         }
         i = j;
@@ -80,9 +78,9 @@ void pushHeap(tHeap* h, tipoElem elem){
     h->nElems++;
 }
 
-void popHeap(tHeap* h){
+void popHeap(tHeap* h){ //! De aqui borre los break de las lineas 90 y 96, revisar si es que no me generara problemas
     int i = 1;
-    h->heap[i] = h->heap[h->nElems];
+    h->heap[i] = h->heap[h->nElems]; //Se deja en la raiz, al ultimo elemento, y en la ultima hoja al primer elemento
     h->nElems--;
     while (2*i <= h->nElems) {
         int izq = 2*i;
