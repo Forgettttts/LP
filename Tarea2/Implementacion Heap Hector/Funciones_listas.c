@@ -1,48 +1,86 @@
 //! Funciones comparacion:
 //? String:
-
-void sort(void *string, char *destino){ //* Recibe el puntero al string original y un puntero a el string donde se copiara ordenado alfabeticamente
-    for (int i = 0; i < strlen(string); i++)
+int cmpString(void *primera, void *segunda) //* Si es que el caracter inicial del primer string va antes que el del segundo, retorna 1, en cualquier otro caso, retorna 0
+{
+    int comienzo_primera = ((char *)primera)[0];
+    int comienzo_segunda = ((char *)segunda)[0];
+    if (comienzo_primera >= 65 && comienzo_primera <= 90)
     {
-        strcpy(destino, (char *)string);
+        comienzo_primera += 32;
     }
-    char temp;
-    int i, j;
-    int n = strlen(destino);
-    for (i = 0; i < n - 1; i++)
+    if (comienzo_segunda >= 65 && comienzo_segunda <= 90)
     {
-        for (j = i + 1; j < n; j++)
-        {
-            if (destino[i] > destino[j])
-            {
-                temp = destino[i];
-                destino[i] = destino[j];
-                destino[j] = temp;
-            }
-        }
+        comienzo_segunda += 32;
     }
-}
-
-int cmpString(void *primera, void *segunda){ //* Retorna 1 si es que el 1ero va antes que el 2d0, retorna 0 en CUALQUIER otro caso
-    char *str1 = (char *)malloc(sizeof(strlen(primera)));
-    char *str2 = (char *)malloc(sizeof(strlen(segunda)));
-
-    printf("Palabra 1: %s, palabra 2: %s\n", primera, segunda);
-    sort(primera, str1);
-    sort(segunda, str2);
-    printf("Palabra 1: %s, palabra 2: %s\n", str1, str2);
-    int orden;
-    if ((int)str1[0] < (int)str2[0])
+    if (comienzo_primera < comienzo_segunda)
     {
-        orden = 1;
+        return 1;
     }
     else
     {
-        orden = 0;
+        return 0;
     }
-    free(str1);
-    free(str2);
-    return orden;
+}
+
+//? Entero
+
+int cmpEntero(void *primera, void *segunda)
+{
+    if ((*(int *)primera) < (*(int *)segunda))
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+//? Flotante
+
+int cmpFlotante(void *primera, void *segunda){
+
+}
+
+//? Arreglo
+
+int cmpArreglo(void *primera, void *segunda)
+{
+    int cantidad1, suma1, cantidad2, suma2;
+    suma1 = 0;
+    suma2 = 0;
+    cantidad1 = ((int *)primera)[0];
+    cantidad2 = ((int *)segunda)[0];
+
+    for (int i = 1; i < (cantidad1 + 1); i++){
+        suma1 += ((int *)primera)[i];
+    }
+
+    for (int j = 1; j < (cantidad2 + 1); j++){
+        suma2 += ((int *)segunda)[j];
+    }
+    if (suma1 < suma2){
+        return 1;
+    }
+    else{
+        return 0;
+    }
 }
 
 //! Funciones printeadoras
+//? String:
+void printString(void* string){
+    printf("%s", ((char*)string));
+}
+
+//? Entero
+
+
+
+//? Flotante
+
+
+
+//? Arreglo
+
+

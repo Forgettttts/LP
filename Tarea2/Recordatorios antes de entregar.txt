@@ -1,0 +1,1 @@
+- Revisar si es que fue permitido usar ctype.h, en ese caso, revisar que la libreria este presente en el archivo en el que quede colocado las funciones printElem

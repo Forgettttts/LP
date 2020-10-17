@@ -19,7 +19,7 @@ typedef struct{
 
 
 
-tHeap *newHeap(int (*comparador)(void *, void *), int (*printElem)(void *)){
+tHeap *newHeap(int (*comparador)(void *, void *), void (*printElem)(void *)){
     tHeap *h = (tHeap *)malloc(sizeof(tHeap));
     if (h == NULL)
     {
