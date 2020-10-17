@@ -4,11 +4,22 @@
 typedef void* perro;
 
 int main(){
-    perro arreglo; //! Ejemplo arreglo enteros
-    int *arreglote = (int *)malloc(sizeof(int) * 5);
-    arreglote[1] = 5;
-    arreglo = arreglote;
-    printf("contenido 1: %d, y del 2: %d\n", arreglote[1], ((int*)arreglo)[1]);
+    int *arreglo1 = (int *)malloc(sizeof(int) * 4);
+    int *arreglo2 = (int *)malloc(sizeof(int) * 5);
+    arreglo1[0] = 3;
+    arreglo1[1] = 234578;
+    arreglo1[2] = 6;
+    arreglo1[3] = 8;
+    arreglo2[0] = 4;
+    arreglo2[1] = 6;
+    arreglo2[2] = 7;
+    arreglo2[3] = 9;
+    arreglo2[4] = 3;
+    perro puntero1;
+    perro puntero2;
+    puntero1 = arreglo1;
+    puntero2 = arreglo2;
+    printf("contenido 1: %d, y del 2: %d\n", arreglo1[1], ((int*)puntero1)[1]);
 
     perro numero; //! Ejemplo INT
     int numerote=7;

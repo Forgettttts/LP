@@ -7,29 +7,16 @@
 #include <string.h>
 #include <ctype.h>
 
-int cmpEntero(void *primera, void *segunda)
+void printFlotante(void *flotante)
 {
-    if ((*(int*)primera)<(*(int*)segunda))
-    {
-        return 1;
-    }
-    else
-    {
-        return 0;
-    }
-    
-    
+    printf("%f", (*(float *)flotante));
 }
 
 int main(){
-    int uno, dos;
-    uno=3;
-    dos=4;
-    void* puntero1;
-    void* puntero2;
-    puntero1=&uno;
-    puntero2=&dos;
-    printf("Resultado=%d\n", cmpEntero(puntero1, puntero2));
+    void* puntero;
+    float numero=123.456;
+    puntero=&numero;
+    printFlotante(puntero);
     return 0;
 }
 

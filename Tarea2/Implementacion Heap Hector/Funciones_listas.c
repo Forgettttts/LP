@@ -23,7 +23,6 @@ int cmpString(void *primera, void *segunda) //* Si es que el caracter inicial de
 }
 
 //? Entero
-
 int cmpEntero(void *primera, void *segunda)
 {
     if ((*(int *)primera) < (*(int *)segunda))
@@ -37,13 +36,19 @@ int cmpEntero(void *primera, void *segunda)
 }
 
 //? Flotante
-
-int cmpFlotante(void *primera, void *segunda){
-
+int cmpFloat(void *primera, void *segunda)
+{
+    if ((*(float *)primera) < (*(float *)segunda))
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
 //? Arreglo
-
 int cmpArreglo(void *primera, void *segunda)
 {
     int cantidad1, suma1, cantidad2, suma2;
@@ -74,13 +79,29 @@ void printString(void* string){
 }
 
 //? Entero
-
-
+void printEntero(void *entero)
+{
+    printf("%d", (*(int *)entero));
+}
 
 //? Flotante
-
-
+void printFlotante(void *flotante)
+{
+    printf("%f", (*(float *)flotante));
+}
 
 //? Arreglo
-
-
+void printArreglo(void *arreglo)
+{
+    int cantidad1 = ((int *)arreglo)[0];
+    printf("{");
+    for (int i = 0; i < (cantidad1 + 1); i++)
+    {
+        printf("%d", ((int *)arreglo)[i]);
+        if (i != cantidad1)
+        {
+            printf(",");
+        }
+    }
+    printf("}");
+}
