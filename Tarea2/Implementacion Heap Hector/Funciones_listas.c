@@ -38,7 +38,7 @@ int cmpEntero(void *primera, void *segunda)
 //? Flotante
 int cmpFloat(void *primera, void *segunda)
 {
-    if ((*(float *)primera) < (*(float *)segunda))
+    if ((*(float *)primera) > (*(float *)segunda))
     {
         return 1;
     }
@@ -105,3 +105,4 @@ void printArreglo(void *arreglo)
     }
     printf("}");
 }
+

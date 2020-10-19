@@ -1,1 +1,1 @@
-- Revisar si es que fue permitido usar ctype.h, en ese caso, revisar que la libreria este presente en el archivo en el que quede colocado las funciones printElem
+1) Mencionar que al printear un arreglo se le dio formato, añadiendole corchetes al principio y final, ademas de comas para poder separar los digitos
