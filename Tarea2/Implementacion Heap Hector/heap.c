@@ -222,3 +222,26 @@ void printArreglo(void *arreglo)
     }
     printf("}");
 }
+
+void heapSort(void** arreglo, int tam_arr, int (*comparador)(void*, void*), void (*printElem)(void*)){
+    tHeap* heap=newHeap(comparador, printElem); //? Creo heap a retornar
+    for (int i = 0; i < tam_arr; i++)
+    {
+        pushHeap(heap, arreglo[i]); //? Añade los elementos al heap
+    }
+    
+    tipoElem retorno[tam_arr]; //? Creamos un heap para printear
+    for (int j = 0; j < tam_arr; j++)
+    {
+        retorno[j]=topHeap(heap);//? Copiamos la raiz del heap, al arreglo
+        popHeap(heap);//? Eliminamos la raiz del heap
+    }
+    //* A este punto, el arreglo tiene todos los elementos del heap, en el mismo orden que estaba en él.
+    for (int k = 0; k < tam_arr; k++)
+    {
+        heap->print(retorno[k]); //? Aqui ira printeando elemento por elemento, segun el tipo de dato del heap
+    }
+    
+    deleteHeap(heap); //? Eliminamos el heap, para liberar la memoria
+    
+}

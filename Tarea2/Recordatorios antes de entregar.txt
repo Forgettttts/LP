@@ -1,1 +1,2 @@
 1) Mencionar que al printear un arreglo se le dio formato, añadiendole corchetes al principio y final, ademas de comas para poder separar los digitos
+2) si es que en alguna funcion haces newHeap, despues hay que haer delete Heap
