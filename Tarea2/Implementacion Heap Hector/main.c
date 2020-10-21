@@ -4,19 +4,88 @@
 #include <stdlib.h>
 #include "heap.h"
 
-//! La funcion comp retorna 1 si es que el primer elemento va antes del segundo, retornara 0 en el caso contrario
-int cmpString(void *primera, void *segunda) {}
-int cmpEntero(void *primera, void *segunda) {}
-int cmpFlotante(void *primera, void *segunda) {}
-int cmpArreglo(void *primera, void *segunda) {}
+typedef struct
+{
+    int base;
+    char* numero;
+}tBase;
 
-//! La funcion print, printeara el elemento entregado, sin caracteres en blan co (espacios, tabulaciones, saltos de linea, etc.)
-void printString(void *elemento) {}
-void printEntero(void *elemento) {}
-void printFlotante(void *elemento) {}
-void printArreglo(void *elemento) {}
+int BaseADecimal(char *original, int base)
+{
+    int len = strlen(original);
+    int potencia = 1;
+    int output = 0;
+    int i;
+    for (i = len - 1; i >= 0; i--){
+        int numero = ((int)original[i]) - '0';
+        if (numero >= base){
+            printf("Numero invalido");
+            return -1;
+        }
+        output += numero * potencia;
+        potencia = potencia * base;
+    }
+    return output;
+}
 
-int main(){
+int cmpStruct(void *primera, void *segunda) {
+    int numero1, numero2;
+
+    numero1 = BaseADecimal(((tBase *)primera)->numero, ((tBase *)primera)->base);
+    numero2 = BaseADecimal(((tBase *)segunda)->numero, ((tBase *)segunda)->base);
+
+    if (numero1>numero2){
+        return 1;}
+    else{
+        return 0;}
+}
+
+void printStruct(void* estructura){
+    printf("%d", ((tBase *)estructura)->numero);
+}
+
+void heapSort(void **arreglo, int tam_arr, int (*comparador)(void *, void *), void (*printElem)(void *)){
+    tHeap *heap = newHeap(comparador, printElem); //? Creo heap a retornar
+    for (int i = 0; i < tam_arr; i++)
+    {
+        pushHeap(heap, arreglo[i]); //? Añade los elementos al heap
+    }
+
+    tipoElem retorno[tam_arr]; //? Creamos un heap para printear
+    for (int j = 0; j < tam_arr; j++)
+    {
+        retorno[j] = topHeap(heap); //? Copiamos la raiz del heap, al arreglo
+        popHeap(heap);              //? Eliminamos la raiz del heap
+    }
+    //* A este punto, el arreglo tiene todos los elementos del heap, en el mismo orden que estaba en él.
+    for (int k = 0; k < tam_arr; k++)
+    {
+        heap->print(retorno[k]); //? Aqui ira printeando elemento por elemento, segun el tipo de dato del heap
+    }
+
+    deleteHeap(heap); //? Eliminamos el heap, para liberar la memoria
+}
+
+void maxBases(tBase* arreglo, int largo, int CantidadDeMaximos){
+    tHeap* rankingBases= newHeap(cmpStruct, printStruct);
+    for (int i = 0; i < largo; i++)
+    {
+        tipoElem actual= &((tipoElem)arreglo)[i];
+        pushHeap(rankingBases, actual);
+    }
+    for (int j = 0; j < CantidadDeMaximos; j++)
+    {
+        tipoElem actual = &((tipoElem)arreglo)[j];
+        printStruct(actual);
+    }
+    
+    
+
+}
+
+    int main()
+{
+    /*
     int numeros[] = {4,3,2,1,2,4,6,7,8,9};
 
     tHeap* h = newHeap();
@@ -33,6 +102,8 @@ int main(){
     printHeap(h);
 
     deleteHeap(h);
+    */
+   
 
     return 0;
 }

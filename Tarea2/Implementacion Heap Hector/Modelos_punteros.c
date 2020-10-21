@@ -1,6 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef struct
+{
+    int base;
+    char *numero;
+} tBase;
+
 typedef void* perro;
 
 int main(){
@@ -35,6 +41,15 @@ int main(){
     char* stringote="Fernando";
     string= stringote;
     printf("El string es: %s, y su primer caracter es: %c\n", ((char*)string), ((char*)string)[0]);
+
+    perro estructura;
+    tBase* alan;
+    alan->base= 2;
+    alan->numero="123";
+    tBase* arreglo[2];
+    arreglo[0]=alan;
+    estructura=arreglo[0];
+    printf("La base de alan es: %d, y su numero es: %s\n", ((tBase*)estructura)->base, ((tBase*)estructura)->numero);
 
     return 0;
 }
