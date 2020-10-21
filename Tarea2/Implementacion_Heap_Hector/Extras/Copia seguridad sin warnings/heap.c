@@ -61,41 +61,42 @@ void swapElemsHeap(tHeap* h, int i, int j){
     return;
 }
 
-void pushHeap(tHeap* h, tipoElem elem){
-    int i = h->nElems+1; 
-    if(i > h->capacidad){ 
-        growHeap(h);
-        if(!is_goodHeap(h)){ 
+void pushHeap(tHeap* h, tipoElem elem){ //! Quiero agregar un elemento nuevo
+    int i = h->nElems+1; //? Se le asigna como posicion al nuevo elemento, la posicion sigueinte a el tamaño actual (se agrandara el heap si es necesario)
+    if(i > h->capacidad){ //? En caso de que al agregar el elemento nuevo, sobrepasemos la capacidad actual
+        growHeap(h); //? Agrandamos la capacidad
+        if(!is_goodHeap(h)){ //? Si es que al agrandar la capacidad huibo algun error, se muestra mensaje de error y se retorna
             printf("Error al expandir la memoria del heap\n");
             return;
         }
     }
-    h->heap[i] = elem; 
+    h->heap[i] = elem; //? Se coloca el elemento en la posicion asignada
     while (i > 1) {
-        int j = i/2; 
-        if (h->cmp(h->heap[i], h->heap[j])){  
-            swapElemsHeap(h, i, j); 
+        int j = i/2; //? j es el padre de el elemeento en la posicion i
+        if (h->cmp(h->heap[i], h->heap[j])){  //? Va el i antes que el j?
+            swapElemsHeap(h, i, j); //? Si es que el i va antes que el j, se camian de lugar
         }
         i = j;
     }
     h->nElems++;
 }
 
-void popHeap(tHeap *h){ 
-    int i = 1;
+void popHeap(tHeap *h){ //! Queremos eliminar el elemento de la cabeza
+    int i = 1; //! Estamos en la cabeza del heap (NODO RAIZ)
     h->heap[i] = h->heap[h->nElems]; 
     h->nElems--;
-    while (2 * i <= h->nElems){
+    //? Colocamos en la cabbeza, el ultimo elemento y disminuimos el tamaño del arreglo
+    while (2 * i <= h->nElems){//? Mientras que el nodo, tenga al menos hijo izquierdo
         int izq = 2 * i;
         int der = 2 * i + 1;
-        
-        if (der > h->nElems || (h->cmp(h->heap[izq], h->heap[der]))){
-            if (h->cmp(h->heap[i], h->heap[izq])) 
+
+        if (der > h->nElems || (h->cmp(h->heap[izq], h->heap[der]))){ //? Si es que no tiene hijo derecho || Si el izq esta correcto respecto al der
+            if (h->cmp(h->heap[i], h->heap[izq])) //? Si es que el hijo izquierdo esta correctamente puesto respecto al padre, significa que estamos listos
                 break;
-            swapElemsHeap(h, i, izq); 
+            swapElemsHeap(h, i, izq); //? Si es que el izquierdo no esta bien colocado, haremos swap con el padre
             i = izq;
         }
-        else{ 
+        else{ //? Si es que tiene hijo derecho o el izq no esta correcto respecto al der
             if (h->cmp(h->heap[i], h->heap[der]))
                 break;
             swapElemsHeap(h, i, der);
@@ -113,13 +114,13 @@ void printHeap(tHeap* h){
         printf(" , ");
         }
     if (h->nElems > 0){
-        h->print(h->heap[h->nElems]);
+        h->print(h->heap[h->nElems]); //! Para que es esta linea? <-----------------------------
         }
     printf("]\n");
     return;
 }
 
-int cmpString(void *primera, void *segunda) 
+int cmpString(void *primera, void *segunda) //* Si es que el caracter inicial del primer string va antes que el del segundo, retorna 1, en cualquier otro caso, retorna 0
 {
     int comienzo_primera = ((char *)primera)[0];
     int comienzo_segunda = ((char *)segunda)[0];
