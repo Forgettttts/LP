@@ -41,7 +41,7 @@ int cmpStruct(void *primera, void *segunda) {
 }
 
 void printStruct(void* estructura){
-    printf("%d", ((tBase *)estructura)->numero);
+    printf("%s", ((tBase *)estructura)->numero);
 }
 
 void heapSort(void **arreglo, int tam_arr, int (*comparador)(void *, void *), void (*printElem)(void *)){
@@ -78,9 +78,6 @@ void maxBases(tBase* arreglo, int largo, int CantidadDeMaximos){
         tipoElem actual = &((tipoElem)arreglo)[j];
         printStruct(actual);
     }
-    
-    
-
 }
 
     int main()

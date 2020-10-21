@@ -18,11 +18,6 @@ typedef struct{
     void (*print)(void*);
 }tHeap;
 
-typedef struct 
-{
-    int base;
-    char* numero;
-}tBase;
 
 
 int cmpString(void *primera, void *segunda);
