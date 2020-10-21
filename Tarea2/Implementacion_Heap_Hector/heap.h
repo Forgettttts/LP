@@ -1,11 +1,9 @@
-//! EN EL LINK HAY 3 ARCHIVOS (LOS QUE TENEMOS AQUI), PARA LA TAREA TENEMOS QUE SOBREESCRIBIR ESTOS?
 #ifndef __HEAP_H__
 #define __HEAP_H__
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define MAXSIZE 1000000
 
 typedef void* tipoElem;
 
@@ -17,8 +15,6 @@ typedef struct{
     int (*cmp)(void*, void*);
     void (*print)(void*);
 }tHeap;
-
-
 
 int cmpString(void *primera, void *segunda);
 
@@ -44,10 +40,7 @@ void clearHeap(tHeap *h);
 
 tipoElem topHeap(tHeap *h);
 
-int sizeHeap(tHeap* h)
-{
-    return h->nElems;
-}
+int sizeHeap(tHeap* h);
 
 void popHeap(tHeap *h);
 

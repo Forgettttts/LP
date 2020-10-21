@@ -1,5 +1,3 @@
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -71,12 +69,12 @@ void maxBases(tBase* arreglo, int largo, int CantidadDeMaximos){
     tHeap* rankingBases= newHeap(cmpStruct, printStruct);
     for (int i = 0; i < largo; i++)
     {
-        tipoElem actual= &((tipoElem)arreglo)[i];
+        tipoElem actual = (tipoElem)&(arreglo[i]);
         pushHeap(rankingBases, actual);
     }
     for (int j = 0; j < CantidadDeMaximos; j++)
     {
-        tipoElem actual = &((tipoElem)arreglo)[j];
+        tipoElem actual = (tipoElem)&(arreglo[j]);
         printStruct(actual);
     }
 }
