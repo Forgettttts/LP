@@ -12,5 +12,5 @@ int main(){
         printf("una letra es menor que otra letra");}
     else{
         printf("Otra letra es menor que una letra");}
-    
+    //confirmando cambios
 }
