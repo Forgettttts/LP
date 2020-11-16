@@ -9,6 +9,9 @@ public class Estudio extends Carta{
     void calcularBonus(){
         System.out.println("Implementando calcularBonus()");
     }
-
+    @Override
+    void mostrarCarta() {
+        System.out.println("Implementando mostrarCarta()");
+    }
     
 }

@@ -19,7 +19,7 @@ class Ramo extends Carta {
         System.out.println(this.lore);
     }
     */
-    void calcularNota(){
+    int calcularNota(){
         System.out.println("Metodo calcularNota()");
     }
 

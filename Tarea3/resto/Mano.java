@@ -1,4 +1,5 @@
 package resto;
+import cartas.Carta;
 
 public class Mano{
     //! List<Carta> cartas;
@@ -13,7 +14,7 @@ public class Mano{
         System.out.println("Implementando anadirCarta()");
     }
 
-    void seleccionarCarta(Integer pos){
+    Carta seleccionarCarta(Integer pos){
         System.out.println("Implementando seleccionarCarta()"+ pos);
     }
 }

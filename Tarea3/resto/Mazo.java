@@ -1,4 +1,5 @@
 package resto;
+import cartas.Carta;
 
 public class Mazo {
     //! List<Carta> cartas;
@@ -7,7 +8,7 @@ public class Mazo {
         
         System.out.println("Implementando putBack()");
     }
-    void draw(){
+    Carta draw(){
         
         System.out.println("Implementando draw()");
     }
