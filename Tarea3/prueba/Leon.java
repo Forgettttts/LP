@@ -1,5 +1,4 @@
 package prueba;
-
 public class Leon {
     String nombre;
     int edad;

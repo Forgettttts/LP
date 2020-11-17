@@ -7,10 +7,18 @@ Como Enseñanza de esto, nos queda que:
     5) Para poder correr algun codigo ya compilado (un archivo.class) se hace: java paquete.archivo (va sin .class ni .java)
 */
 package prueba;
-
-public class Gato {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+public class Gato {
+    enum Level{
+        PERRO,
+        GATO,
+        ZORRO
+    }
     public static void main(String[] args){
-        System.out.println("Gato exitoso");
+        Level prueba= Level.GATO;
+        if (prueba==Level.GATO){
+            System.out.println("Srive para Matemáticas :)");
+        }
+        
         Tigre tigresito = new Tigre("alan",12);
         tigresito.showData();
 

@@ -1,5 +1,5 @@
 package resto;
-import cartas.Carta;
+import Tarea3.cartas.Carta;
 
 public class Mazo {
     //! List<Carta> cartas;

@@ -1,30 +1,35 @@
 package cartas;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Ramo extends Carta {
-    int creditos;
-    //! List<Estudio>                      <-- AYUDA AQUI
-    //! Enum area;                         <-- AYUDA AQUI
+    Integer creditos;
+    List<Estudio> estudios;
+    departamento area;
+    int sumaTotal;
 
-    /** 
-    public Ramo(String nombrecito, String lorecito){
-        this.lore=lorecito;
-        this.nombre=nombrecito;
+    public Ramo(Integer credititos, departamento areacita){
+        this.creditos=credititos;
+        this.area=areacita;
+        this.estudios=new ArrayList<>();
+        this.sumaTotal=0;
     }
 
-
-    public void showData(){
-        System.out.println(this.nombre);
-        System.out.println(this.lore);
-    }
-    */
     int calcularNota(){
-        System.out.println("Metodo calcularNota()");
+        for (Estudio study : estudios) {
+            int estudioLocal= study.calcularBonus();
+            if (study.area==this.area){
+                estudioLocal*=1.25;
+            }
+            sumaTotal+=estudioLocal;
+        }
+        sumaTotal-=(this.creditos*2);
+        return sumaTotal;
     }
 
-    void anadirEstudio(){//! Falta los parametros, pq es de tipo Estudio                     <-- AYUDA AQUI
-        System.out.println("Implementando anadirEstudio()");
+    void anadirEstudio(Estudio estudio){
+        estudios.add(estudio);
     }
 
 
