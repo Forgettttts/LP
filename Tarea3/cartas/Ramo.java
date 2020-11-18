@@ -3,13 +3,14 @@ package cartas;
 import java.util.ArrayList;
 import java.util.List;
 
-class Ramo extends Carta {
+public class Ramo extends Carta {
     Integer creditos;
     List<Estudio> estudios;
     departamento area;
     int sumaTotal;
 
-    public Ramo(Integer credititos, departamento areacita){
+    public Ramo(String nombrecito, String lorecito, Integer credititos, departamento areacita){
+        super(nombrecito, lorecito);
         this.creditos=credititos;
         this.area=areacita;
         this.estudios=new ArrayList<>();
@@ -21,6 +22,7 @@ class Ramo extends Carta {
             int estudioLocal= study.calcularBonus();
             if (study.area==this.area){
                 estudioLocal*=1.25;
+                System.out.println("Bonus por area aplicado\n");
             }
             sumaTotal+=estudioLocal;
         }
@@ -32,9 +34,16 @@ class Ramo extends Carta {
         estudios.add(estudio);
     }
 
+    public String getNombre(){
+        return this.nombre;
+    }
+
 
     @Override
-    void mostrarCarta() {
-        System.out.println("Implementando mostrarCarta()");
+    public void mostrarCarta() {
+        System.out.println("\tNombre: " + nombre + "\n");
+        System.out.println("\tLore: " + lore + "\n");
+        System.out.println("\tArea: " + area.obtenerSector() + "\n");
+        System.out.println("\tCreditos:  " + area.obtenerCreditos() + "\n");
     }
 }

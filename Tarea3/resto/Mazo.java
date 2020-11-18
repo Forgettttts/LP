@@ -1,20 +1,34 @@
 package resto;
-import Tarea3.cartas.Carta;
+
+import java.util.ArrayList;
+import java.util.*;
+
+import cartas.*;
 
 public class Mazo {
-    //! List<Carta> cartas;
+    List<Carta> cartas;
 
-    void putBack(){ //! Aqui falta paraametros:  Carta carta
-        
-        System.out.println("Implementando putBack()");
-    }
-    Carta draw(){
-        
-        System.out.println("Implementando draw()");
+    public Mazo(){
+        this.cartas= new ArrayList<>();
     }
 
-    void shuffle(){
-        
-        System.out.println("Implementando shuffle()");
+    public void putBack(Carta carta){
+        this.cartas.add(carta);
+    }
+    public Carta draw(){
+        if (this.cartas.isEmpty()){
+            System.out.println("Mazo vacio, no hay carta que entregar\n");
+            return null;
+        }
+        return this.cartas.remove(this.cartas.size()-1);
+    }
+
+    public void shuffle(){
+        if (this.cartas.isEmpty()){
+            System.out.println("Mazo vacio, no puede ser revuelto");
+        }
+        else{
+            Collections.shuffle(this.cartas);
+        }
     }
 }

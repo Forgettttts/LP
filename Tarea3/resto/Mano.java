@@ -1,20 +1,31 @@
 package resto;
-import cartas.Carta;
+import cartas.*;
 
+import java.util.ArrayList;
+import java.util.*;
 public class Mano{
-    //! List<Carta> cartas;
+    List<Carta> cartas;
 
-    void mostrarMano(){
-        
-        System.out.println("Implementando mostrarMano()");
+    public Mano(){
+        cartas = new ArrayList<>(6);
     }
 
-    void anadirCarta(){ //! Aqui faltan los parametros que es:  Carta carta
-        
-        System.out.println("Implementando anadirCarta()");
+    void mostrarMano(){
+        System.out.println("Cartas: \n");
+        for (Carta card : cartas) {
+            card.mostrarCarta();
+        }
+    }
+
+    void anadirCarta(Carta carta){
+        if (cartas.size()<6){
+            this.cartas.add(carta);}
+        else{
+            System.out.println("Mano llena, no puedes tener mas de 6 cartas en tu mano \n");
+        }
     }
 
     Carta seleccionarCarta(Integer pos){
-        System.out.println("Implementando seleccionarCarta()"+ pos);
+        return this.cartas.get(pos);
     }
 }

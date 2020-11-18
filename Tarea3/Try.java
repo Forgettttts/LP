@@ -14,5 +14,7 @@ public class Try {
         for (departamento d : departamento.values()){
             System.out.println("El departamento "+d+" tiene "+d.creditosRamo+" creditos");
         }
+
+        
     }
 }
