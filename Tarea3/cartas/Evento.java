@@ -6,7 +6,18 @@ public class Evento extends Carta{
 
     public efecto eventito;
     void aplicarEvento( Tablero tablero, Mazo mazoCarrera){
-        //! Falta la implementacion aqui, despues de hacer tablero
+        if (this.eventito.obtenerEfecto().equals("RAV")){
+
+        }
+        else if( this.eventito.obtenerEfecto().equals("Cambio de coordinacion")){
+
+        }
+        else if(this.eventito.obtenerEfecto().equals("Buff")){
+
+        }
+        else{
+            System.out.println("Error al detectar evento. Evento no aplicado\n");
+        }
     }
 
     public Evento(String nombrecito, String lorecito, efecto efectito){

@@ -8,8 +8,9 @@ public class Estudio extends Carta{
     departamento area;
     String variante;
 
-    public Estudio(String nombrecito, String lorecito, Integer horitas){
+    public Estudio(String nombrecito, String lorecito, Integer horitas, departamento areacita){
         super(nombrecito, lorecito);
+        this.area=areacita;
         this.horas=horitas;
         if (this.horas==2){
             variante="Comun";

@@ -9,10 +9,10 @@ public class Ramo extends Carta {
     departamento area;
     int sumaTotal;
 
-    public Ramo(String nombrecito, String lorecito, Integer credititos, departamento areacita){
+    public Ramo(String nombrecito, String lorecito, departamento areacita){
         super(nombrecito, lorecito);
-        this.creditos=credititos;
         this.area=areacita;
+        this.creditos=areacita.obtenerCreditos();
         this.estudios=new ArrayList<>();
         this.sumaTotal=0;
     }
