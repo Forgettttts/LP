@@ -36,6 +36,10 @@ public abstract class Carta {
     String nombre;
     String lore;
 
+    public String getName(){
+        return this.nombre;
+    }
+
     public Carta(String nombrecito, String lorecito){
         this.nombre=nombrecito;
         this.lore=lorecito;

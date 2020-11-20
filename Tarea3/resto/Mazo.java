@@ -12,6 +12,10 @@ public class Mazo {
         this.cartas= new ArrayList<>();
     }
 
+    public Carta eliminarEnPosicion(Integer posicion){
+        return this.cartas.remove((int)(posicion));
+    }
+
     public void putBack(Carta carta){
         this.cartas.add(carta);
     }
@@ -21,6 +25,11 @@ public class Mazo {
             return null;
         }
         return this.cartas.remove(this.cartas.size()-1);
+    
+    }
+
+    public Carta getInPosition(Integer posicion){
+        return cartas.get(posicion);
     }
 
     public void shuffle(){

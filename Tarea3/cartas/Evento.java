@@ -1,15 +1,22 @@
 package cartas;
 
 import resto.*;
+
 public class Evento extends Carta{
     
 
     public efecto eventito;
-    void aplicarEvento( Tablero tablero, Mazo mazoCarrera){
+    void aplicarEvento( Tablero tablero, Mazo mazoCarrera, Integer posicionCarta){
         if (this.eventito.obtenerEfecto().equals("RAV")){
-
+            Carta ramoBotado= mazoCarrera.eliminarEnPosicion(posicionCarta);
+            System.out.println("Botaste el ramo "+ramoBotado.getName());
         }
         else if( this.eventito.obtenerEfecto().equals("Cambio de coordinacion")){
+            if (Math.random() < 0.5) {
+                Carta ramoAfectado = mazoCarrera.getInPosition(posicionCarta);
+            } else {
+            }
+            break;
 
         }
         else if(this.eventito.obtenerEfecto().equals("Buff")){

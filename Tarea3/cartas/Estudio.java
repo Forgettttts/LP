@@ -1,5 +1,7 @@
 package cartas;
 
+import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
+
 public class Estudio extends Carta{
     
     Integer horas;
@@ -34,6 +36,10 @@ public class Estudio extends Carta{
 
     public int getHoras(){
         return this.horas;
+    }
+
+    public String getName(){
+        return nombre;
     }
     @Override
     public void mostrarCarta() {

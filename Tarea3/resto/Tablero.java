@@ -13,12 +13,10 @@ public class Tablero {
     }
 
     void jugarEstudio(Estudio estudio, Integer pos){
-        if (pos ==-1){
-            this.horasDisponibles -= estudio.getHoras();
-            System.out.println("Estudio realizado, ahora solo te quedan "+this.horasDisponibles+" horas disponibles \n");
-            //! Cual es el efecto que realiza la carta estudio? que parametros son los que cambia?
-
-        }
+        this.horasDisponibles-=estudio.getHoras();
+        Ramo ramito= semestre.get(pos);
+        ramito.anadirEstudio(estudio);
+        System.out.println("Se aplico la carta estudio: "+estudio.getName()+" al ramo: "+ramito.getNombre());
     }
 
     void mostrarTablero(){

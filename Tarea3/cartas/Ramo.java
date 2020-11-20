@@ -8,6 +8,7 @@ public class Ramo extends Carta {
     List<Estudio> estudios;
     departamento area;
     int sumaTotal;
+    int bonusEvento;
 
     public Ramo(String nombrecito, String lorecito, departamento areacita){
         super(nombrecito, lorecito);
@@ -15,9 +16,10 @@ public class Ramo extends Carta {
         this.creditos=areacita.obtenerCreditos();
         this.estudios=new ArrayList<>();
         this.sumaTotal=0;
+        this.bonusEvento=0;
     }
 
-    int calcularNota(){
+    public int calcularNota(){
         for (Estudio study : estudios) {
             int estudioLocal= study.calcularBonus();
             if (study.area==this.area){
@@ -26,11 +28,11 @@ public class Ramo extends Carta {
             }
             sumaTotal+=estudioLocal;
         }
-        sumaTotal-=(this.creditos*2);
+        sumaTotal-=((this.creditos+this.bonusEvento)*2);
         return sumaTotal;
     }
 
-    void anadirEstudio(Estudio estudio){
+    public void anadirEstudio(Estudio estudio){
         estudios.add(estudio);
     }
 
@@ -38,6 +40,9 @@ public class Ramo extends Carta {
         return this.nombre;
     }
 
+    public void setBonusEvento(int bonus){
+        this.bonusEvento=bonus;
+    }
 
     @Override
     public void mostrarCarta() {
