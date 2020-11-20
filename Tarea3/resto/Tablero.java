@@ -12,14 +12,25 @@ public class Tablero {
         semestre=new ArrayList<>(10);
     }
 
-    void jugarEstudio(Estudio estudio, Integer pos){
+    public void jugarEstudio(Estudio estudio, Integer pos){
         this.horasDisponibles-=estudio.getHoras();
         Ramo ramito= semestre.get(pos);
         ramito.anadirEstudio(estudio);
         System.out.println("Se aplico la carta estudio: "+estudio.getName()+" al ramo: "+ramito.getNombre());
     }
 
-    void mostrarTablero(){
+    /**
+     * getSemestre: Retorna la la lista de los ramos del semestre 
+     *
+     * @return List<Ramo>: Se retorna la lista de ramos.
+     */
+    public List<Ramo> getSemestre(){
+        return this.semestre;
+    }
+
+    public void mostrarTablero(){
+        
+        System.out.println("Horas disponibles: " + horasDisponibles);
         System.out.println("Ramos presentes en el semestre: \n");
         for (Ramo ramo : semestre) {
             System.out.println("\t"+ ramo.getNombre()+"\n");

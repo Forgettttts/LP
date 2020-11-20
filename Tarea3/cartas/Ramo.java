@@ -36,10 +36,20 @@ public class Ramo extends Carta {
         estudios.add(estudio);
     }
 
+    /**
+     * getNombre: Obtener nombre de un ramo
+     *
+     * @return String: El nombre correspondiente.
+     */
     public String getNombre(){
         return this.nombre;
     }
 
+    /**
+     * setBonusEventos: Setear el bonus de cada evento
+     *
+     * @return void: Solo setea el valor
+     */
     public void setBonusEvento(int bonus){
         this.bonusEvento=bonus;
     }

@@ -6,6 +6,8 @@ import cartas.*;
 import cartas.Carta.departamento;
 import cartas.Carta.efecto;
 
+import java.util.Scanner;
+import static javax.swing.JOptionPane.*;
 public class Juego {
     
     Mazo mazoCarrera; //* Inicializado y  lleno
@@ -23,6 +25,11 @@ public class Juego {
 
     }
 
+    /**
+     * llenarMazoCarrera: Una vez el mazo este declarado e inicializado, este metodo lo llena con los ramos ordenados al azar
+     *
+     * @return void: Solo llena y mezcla el mazo.
+     */
     public void llenarMazoCarrera(){
         Ramo r1 = new Ramo("Mate 1", "¿Creias que eras bueno para las matematicas? lo veremos... Pero tranquilo, en el peor de los casos, al menos tendras una leccion de humildad HAHAHA", departamento.MATEMATICA);
         Ramo r2 = new Ramo("Mate 2", "Vaya vaya, pasaste mate 1, con sus derivadas, veamos si puedes conmigo, yo tengo de mi lado a las integrales y espacios vectoriales... ¿Tu a quien tienes de tu lado?", departamento.MATEMATICA);
@@ -50,6 +57,12 @@ public class Juego {
         mazoCarrera.shuffle();
     }
 
+    /**
+     * llenarMazoUniversitario: Una vez el mazo este declarado e inicializado, este metodo
+     * lo llena con los ramos ordenados al azar
+     *
+     * @return void: Solo llena y mezcla el mazo.
+     */
     public void llenarMazoUniversitario(){
         Estudio E1 = new Estudio("Instrospeccion del chacra", "Carta para recorrer tus interiores encontrando la razon de tu sufrimiento en medio de tu estudio (HINT: comienza con US y termina con M)", 2, departamento.HUMANISTA);
         Estudio E2 = new Estudio("Resistirse a cerrito", "Despues de 10 minutos estudiando, lograste dominar tu tentacion de ir a divertirte", 3, departamento.HUMANISTA);
@@ -112,7 +125,64 @@ public class Juego {
         mazoUniversitario.shuffle();
     }
     
-    public static void main(String[] args){
+    /**
+     * hacerTablero: Realiza las operaciones para generar el tablero y ordenar el tablero
+     *
+     * @return void: Solo realiza las operaciones
+     */
+    public void hacerTablero(){
+        mano=new Mano();
+        Tablero tableron = new Tablero();
+        llenarMazoCarrera();
+        llenarMazoUniversitario();
+        mazoCarrera.shuffle();
+        mazoUniversitario.shuffle();
+
+        while(aprobados<4 && reprobados<2){
+            for (int i = 0; i < 6; i++) {
+                Carta aca = mazoUniversitario.draw();
+                mano.anadirCarta(aca);
+                mazoUniversitario.shuffle();
+            }
+            
+            Carta aca = mazoCarrera.draw();
+            tableron.semestre.add((Ramo)aca);
+            tableron.semestre.add((Ramo) mazoCarrera.draw());
+            tableron.mostrarTablero();
+            mano.mostrarMano();
+            while (tableron.horasDisponibles>0){
+                System.out.println("");
+                Scanner input =new Scanner(System.in);
+                System.out.println("Seleccione una carta de la mano para jugar (Ingresando la posicion desde 1 en adelante) \n");
+                int numerolugar= input.nextInt();
+                Carta jugada= mano.seleccionarCarta(numerolugar-1);
+                if (jugada instanceof Evento){
+                    ((Evento)jugada).aplicarEvento(tableron, mazoCarrera);
+                }
+                else{
+                    tableron.jugarEstudio((Estudio)jugada, (numerolugar-1));
+                }
+            }
+            for (Ramo nomina : (tableron.semestre)) {
+                if (nomina.calcularNota()>55){
+                    this.aprobados++;
+                }
+                else{
+                    this.reprobados++;
+                }
+
+            }
+        }
+
         
+
+
+
+    }
+
+    public static void main(String[] args){
+        System.out.println("\t ..:: Bienvenido ::..\n");
+        Juego actual= new Juego();
+        actual.hacerTablero();
     }
 }

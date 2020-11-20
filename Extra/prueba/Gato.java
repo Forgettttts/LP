@@ -7,6 +7,9 @@ Como Enseñanza de esto, nos queda que:
     5) Para poder correr algun codigo ya compilado (un archivo.class) se hace: java paquete.archivo (va sin .class ni .java)
 */
 package prueba;
+
+import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.*;
 public class Gato {
     enum Level{
         PERRO,
@@ -18,8 +21,9 @@ public class Gato {
         if (prueba==Level.GATO){
             System.out.println("Srive para Matemáticas :)");
         }
-        
-        Tigre tigresito = new Tigre("alan",12);
+        String cadena = JOptionPane.showInputDialog("Digite una cadena:");
+        Integer entero = Integer.parseInt(JOptionPane.showInputDialog("Digite una numero:"));
+        Tigre tigresito = new Tigre(cadena,entero);
         tigresito.showData();
 
         Leon leoncito = new Leon(12, "Pepe");

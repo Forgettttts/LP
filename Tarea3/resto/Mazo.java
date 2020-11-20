@@ -12,6 +12,13 @@ public class Mazo {
         this.cartas= new ArrayList<>();
     }
 
+    /**
+     * eliminarEnPosicion: Elimina la carta en la posicion entregada por parametro y
+     * la retorna
+     *
+     * @param posicion int : posicion donde se encuentra el elemento que queremos eliminar.
+     * @return Carta: Se retorna la carta que se elimina.
+     */
     public Carta eliminarEnPosicion(Integer posicion){
         return this.cartas.remove((int)(posicion));
     }
@@ -28,6 +35,13 @@ public class Mazo {
     
     }
 
+    /**
+     * getInPosition: Retorna la carta presente en la posicion ingresada como parametro
+     *
+     * @param posicion Integer  : posicion donde se encuentra el elemento que queremos
+     *                 retornar.
+     * @return Carta: Se retorna la carta que se solicita por parametro.
+     */
     public Carta getInPosition(Integer posicion){
         return cartas.get(posicion);
     }

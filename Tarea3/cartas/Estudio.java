@@ -6,7 +6,7 @@ public class Estudio extends Carta{
     
     Integer horas;
     Integer bonusMin ;
-    Integer bonusMax ;
+    int bonusMax ;
     departamento area;
     String variante;
 
@@ -30,14 +30,24 @@ public class Estudio extends Carta{
             System.out.println("Variante indeterminada, bonus no realizado");
         }
     }
+    
+    
     public int calcularBonus(){
         return (int)(Math.random()*(this.bonusMax-this.bonusMin+1)+this.bonusMin);
     }
-
+/**
+         * getHoras: obtener la cantidad de horas que gasta un estudio
+         *
+         * @return int: Las horas correspondientes.
+         */
     public int getHoras(){
         return this.horas;
     }
-
+/**
+         * getName: obtener el nombre de cada carta
+         *
+         * @return String: El nombre correspondiente.
+         */
     public String getName(){
         return nombre;
     }
@@ -49,5 +59,7 @@ public class Estudio extends Carta{
         System.out.println("\tHoras de estudio: "+ horas+"\n");
         System.out.println("\tArea: "+ area.obtenerSector()+"\n");
         System.out.println("\tCreditos:  "+ area.obtenerCreditos()+"\n");
+        
+        System.out.println("\n.................................................................");
         }
     }
