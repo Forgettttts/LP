@@ -1,0 +1,22 @@
+JCC =	javac
+JFLAGS =   -Xlint:all -g
+
+.SUFFIXES: .java .class
+.java.class:
+	$(JCC) $(JFLAGS) $*.java
+
+CLASSES = \
+	Tarea3/cartas/Carta.java\
+	Tarea3/resto/Juego.java\
+	Tarea3/resto/Tablero.java\
+	Tarea3/cartas/Evento.java\
+	Tarea3/cartas/Ramo.java\
+	Tarea3/resto/Mazo.java\
+	Tarea3/resto/Mano.java\
+
+default: classes
+
+classes: $(CLASSES:.java=.class)
+
+clean:
+	$(RM) *.class

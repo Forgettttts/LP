@@ -1,7 +1,8 @@
 package cartas;
 
 
-import resto.*;
+import resto.Tablero;
+import resto.Mazo;
 
 import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.*;

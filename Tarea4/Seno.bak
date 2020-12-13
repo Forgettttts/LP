@@ -1,0 +1,36 @@
+#lang scheme
+
+(define calculoFactorial
+  (lambda(n)
+    (let fact ((i n) (a 1))
+      (if (= i 0)
+          a
+          (fact (- i 1) (* a i))
+          )
+      )
+    )
+  )
+
+(define (calculoInterno n x)
+  (/(* (expt -1 n) (expt x (+ (* 2 n) 1)))(calculoFactorial (+(* 2.0 n)1))))
+
+
+;; n= numero que se le quiere calcular el seno
+;; p= variable donde se copia n
+;; a= actual momento de la suma
+;; s= suma de el valor del seno
+(define seno
+  (lambda (n)
+    (let senito((p n)(a 0)(s 0))
+      (if (= p 0);; Si se pide (sen 0), entonces se  retorna inmediatamente el 0
+          s
+          (if (= a 10);; aqui se establece el maximo de iteraciones
+              s
+              (senito p(+ a 1)(+ s (calculoInterno a p)))
+              )
+          )
+      )
+    )
+  )
+
+(seno 90)
