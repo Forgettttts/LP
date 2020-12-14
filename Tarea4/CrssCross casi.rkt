@@ -1,10 +1,19 @@
 #lang scheme
+
+;;(numeroAzar lista)
+;;Funcionamiento: Recibe una lista, retorna un numero al azar entre 0 y un numero menos que el largo de la lista
+;;Retorno de la función: Un numero al azar entre 0 y un numero menos que el largo de la lista
 (define numeroAzar
   (lambda (lista)
     (random (length lista)) 
     )
   )
 
+;;(armarListasNuevas largoLista lista1 lista2 limiteInferior limiteSuperior PonerUnCero newList)
+;;Funcionamiento: Recibe el largo de una de las dos listas, las dos listas, el corte inferior, el corte superior (aunque sean iguales), un 0 (por un error, lo deje asi, no es elegante,
+;;                pero funciona) y una nueva lista, donde se guardara la lista nueva, que mezcla las dos listas segun el corte que se entregue, sirve para armar cada una de las 2 listas
+;;                que se necesitan a la vez
+;;Retorno de la función: No tiene retorno, simplemente muestra por pantalla la lista recien creada
 (define armarListasNuevas
   (lambda (largoLista lista1 lista2 limiteInferior limiteSuperior PonerUnCero newList1)
     (let armar ((larguito largoLista)(listaOriginal lista1)(listaOriginal2 lista2)(limite1 limiteInferior)(limite2 limiteSuperior)(iteracion PonerUnCero)(nuevaLista newList1))
